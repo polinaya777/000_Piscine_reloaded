@@ -6,7 +6,7 @@
 /*   By: pyarova <pyarova@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 11:12:30 by pyarova           #+#    #+#             */
-/*   Updated: 2024/10/08 11:36:57 by pyarova          ###   ########.fr       */
+/*   Updated: 2024/10/08 11:53:23 by pyarova          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,11 @@ void	ft_display_file(char *file_name)
 		write(1, "Cannot read file.\n", 18);
 		return ;
 	}
-	while ((ret = read(fd, buff, 4096)) > 0)
+	ret = read(fd, buff, 4096);
+	while (ret > 0)
 	{
 		write(1, buff, ret);
+		ret = read(fd, buff, 4096);
 	}
 	close(fd);
 }
